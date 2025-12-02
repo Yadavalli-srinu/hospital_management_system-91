@@ -1,0 +1,73 @@
+
+    body{
+    background-image: url("https://thumbs.dreamstime.com/b/healthcare-technology-doctor-using-digital-tablet-icon-medical-network-hospital-background-162019727.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+        .form-box {
+            
+            width: 450px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            border-top: 6px solid #0097a7; 
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #006064;
+            font-weight: 700;
+        }
+
+        form p label {
+            font-weight: 600;
+            color: #004d40; 
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #b2dfdb;
+            border-radius: 8px;
+            margin-top: 5px;
+            margin-bottom: 18px;
+            font-size: 15px;
+            background: #f1fefc; 
+            
+        }
+
+        /* input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #0097a7;
+            box-shadow: 0 0 6px rgba(0, 150, 150, 0.4);
+        } */
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #0097a7;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #007c8a;
+        }
+
+    
