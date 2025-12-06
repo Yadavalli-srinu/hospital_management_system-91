@@ -83,7 +83,6 @@ WSGI_APPLICATION = 'hospital_project.wsgi.application'
 
 
 import os
-
 if os.environ.get("RENDER"):
     DATABASES = {
         "default": {
