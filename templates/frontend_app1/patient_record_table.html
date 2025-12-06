@@ -150,8 +150,8 @@ table tr:hover {
             <td>{{i.treatment}}</td>
             <td>{{i.prescription}}</td>
             <td>{{i.created_date}}</td>
-            <td><a href="{% url 'patient_record_update' i.id%}" class="btn-edit">edit</a></td>
-            <td><a href="{% url 'patient_record_delete' i.id%}" class="btn-del">del</a></td>
+            <td><a href="{% url 'patient_record_update' i.id %}" class="btn-edit">edit</a></td>
+            <td><a href="{% url 'patient_record_delete' i.id %}" class="btn-del">del</a></td>
         </tr>
         {% endfor %}
     </table>
