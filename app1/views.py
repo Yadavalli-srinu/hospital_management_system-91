@@ -37,10 +37,10 @@ def log_details(request):
         user = authenticate(request,username=username,password=password)
         if  user is not None:
             login(request,user)
-            
+            return redirect('home')
         else:
             message='Invalid Details'
-            return redirect('home')
+            
     return render(request,'frontend_app1/log.html',{"message":message})
     
 #HOME PAGE
