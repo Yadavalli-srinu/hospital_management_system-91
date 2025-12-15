@@ -46,8 +46,18 @@ def log_details(request):
 #HOME PAGE
 
 def home_page(request):
-    return render(request,'frontend_app1/home.html')
+    dept_total = department_model.objects.count()
+    doctor_total = doctor_model.objects.count()
+    patient_total = patient_model.objects.count()
+    record_total = patient_record_model.objects.count()
 
+    context = {
+        "dept_total": dept_total,
+        "doctor_total": doctor_total,
+        "patient_total": patient_total,
+        "record_total": record_total,
+    }
+    return render(request, "frontend_app1/home.html", context)
 
 
 
@@ -57,8 +67,9 @@ def home_page(request):
 #DEPARTMENT
 def department_details(requst):
     data = department_model.objects.all()
+    
     content={
-        "data":data
+        "data":data,
     }
     return render(requst,'frontend_app1/department_table.html',content)
 
@@ -229,3 +240,35 @@ def patient_record_delete(request, id):
     data = patient_record_model.objects.get(id=id)
     data.delete()
     return redirect('patient_record_list')
+
+
+#user Verification
+
+
+
+def verify_user(request, action, model_name, id):
+    message = ''
+
+    if request.method == "POST":
+        username = request.POST.get('username')   
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            
+            if model_name == "department":
+                return redirect(f'department_{action}', id=id)
+
+            elif model_name == "doctor":
+                return redirect(f'doctor_{action}', id=id)
+
+            elif model_name == "patient":
+                return redirect(f'patient_{action}', id=id)
+
+            elif model_name == "record":
+                return redirect(f'patient_record_{action}', id=id)
+        else:
+            message = "Invalid Username or Password"
+
+    return render(request, 'frontend_app1/verify.html', {"message": message})

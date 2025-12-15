@@ -5,87 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-      table {
-    background-image: linear-gradient(rgba(0, 128, 0, 0.619),white);
-    width: 60%;
+       body {
+    background-image: url("https://thumbs.dreamstime.com/b/doctor-hand-medical-background-d-42384192.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 90px;  
+}
+table {
+    width: 75%;
     margin: 30px auto;
     border-collapse: collapse;
-    font-family: Arial, sans-serif;
-    
+    font-family: "Poppins", sans-serif;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-table th {
-    background-color: #0077b6;  
-    color: white;
-    padding: 12px;
-    text-align: left;
-    font-size: 16px;
-}
-
-table td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-    
-}
-
-table tr:hover {
-    background-color: #f1faff;
-}
-.btn-edit {
-    background: green;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-}
-
-.btn-del {
-    background: red;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-}
-
-.btn-add {
-    background: blue;
-    color: white;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-    margin: 20px 20px;
-    display: inline-block;
-}
-#edit:hover {
-    background-color: #27ae60;
-}
-
-#del:hover {
-    background-color: #c1121f;
-}
-
-#add:hover {
-    background-color: #0d47a1;
-}
- h1 {
+/* Table Title */
+h1 {
     text-align: center;
-    font-family: "Segoe UI", sans-serif;
-    font-size: 32px;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    color: #004d40;
     font-weight: 700;
+}
+
+/* Table Header */
+th {
+    background: linear-gradient(135deg, #0097a7, #006064);
+    color: white;
+    padding: 14px;
+    font-size: 16px;
     letter-spacing: 1px;
 }
 
-    </style>
+/* Table Rows */
+td {
+    padding: 12px;
+    color: #003c34;
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(0, 121, 107, 0.3);
+    font-size: 15px;
+}
+
+/* Hover Effect */
+tr:hover td {
+    background: rgba(0, 151, 167, 0.15);
+}
+
+/* Buttons inside table */
+.btn-edit, .btn-del, .btn-add {
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+}
+
+/* Edit Button */
+.btn-edit {
+    background: #007c8a;
+}
+
+.btn-edit:hover {
+    background: #0097a7;
+}
+
+/* Delete Button */
+.btn-del {
+    background: #d32f2f;
+}
+
+.btn-del:hover {
+    background: #b71c1c;
+}
+
+/* Add Button (Full width below table) */
+.btn-add {
+    display: inline-block;
+    margin: 25px auto;
+    padding: 12px 22px;
+    background: linear-gradient(135deg, #0097a7, #006064);
+    font-size: 17px;
+}
+
+.btn-add:hover {
+    background: linear-gradient(135deg, #00acc1, #007c8a);
+    transform: translateY(-2px);
+}
+.navbar-glass {
+    background: rgba(0, 150, 136, 0.35);  /* teal transparent */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Brand */
+.navbar-glass .navbar-brand {
+    font-weight: 700;
+    color: #004d40 !important;
+    letter-spacing: 1px;
+}
+
+/* Nav Links */
+.navbar-glass .nav-link {
+    font-weight: 600;
+    color: #003c34 !important;
+    margin-left: 8px;
+    padding: 8px 14px !important;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar-glass .nav-link:hover {
+    background: rgba(0, 121, 107, 0.25);
+    transform: translateY(-2px);
+    color: #004d40 !important;
+}
+
+/* Active Link (Optional Auto Highlight) */
+.navbar-glass .nav-link.active {
+    background: rgba(0, 150, 136, 0.4);
+    color: #004d40 !important;
+}
+
+/* Menu Toggler */
+.navbar-glass .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-glass .navbar-toggler-icon {
+    filter: brightness(0.9);
+}
+   </style>
 <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}">Hospital System</a>
 
@@ -98,31 +161,31 @@ table tr:hover {
     <div class="collapse navbar-collapse" id="navmenu">
 
       <ul class="navbar-nav ms-auto">
-        
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
-        </li>
-        <!-- Department -->
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'department_list' %}">Department</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" 
+             href="{% url 'home' %}">Home</a>
         </li>
 
-        <!-- Doctor -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'doctor_list' %}">Doctor</a>
+          <a class="nav-link {% if 'department' in request.path %}active{% endif %}" 
+             href="{% url 'department_list' %}">Department</a>
         </li>
 
-        <!-- Patient -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'patient_list' %}">Patient</a>
+          <a class="nav-link {% if 'doctor' in request.path %}active{% endif %}" 
+             href="{% url 'doctor_list' %}">Doctor</a>
         </li>
 
-        <!-- Patient Record -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'patient_record_list' %}">Patient Record</a>
+          <a class="nav-link {% if 'patient_list' in request.path %}active{% endif %}" 
+             href="{% url 'patient_list' %}">Patient</a>
         </li>
 
-        
+        <li class="nav-item">
+          <a class="nav-link {% if 'patient_record' in request.path %}active{% endif %}" 
+             href="{% url 'patient_record_list' %}">Patient Record</a>
+        </li>
 
       </ul>
 
@@ -131,31 +194,41 @@ table tr:hover {
 </nav>
 
 
-
     <table>
-      <h1>Patient_Record_Table</h1>
-        <tr>
-            <th>Patient</th>
-            <th>Disease</th>
-            <th>Treatment</th>
-            <th>Drescription</th>
-            <th>Created_date</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-        {% for i in data %}
-        <tr>
-            <td>{{i.patient}}</td>
-            <td>{{i.disease}}</td>
-            <td>{{i.treatment}}</td>
-            <td>{{i.prescription}}</td>
-            <td>{{i.created_date}}</td>
-            <td><a href="{% url 'patient_record_update' i.id %}" class="btn-edit">edit</a></td>
-            <td><a href="{% url 'patient_record_delete' i.id %}" class="btn-del">del</a></td>
-        </tr>
-        {% endfor %}
-    </table>
-    <a href="{% url 'patient_record_add' %}" class="btn-add">ADD</a>
+  <h1>Patient_Record_Table</h1>
+  <tr>
+      <th>Patient</th>
+      <th>Disease</th>
+      <th>Treatment</th>
+      <th>Prescription</th>
+      <th>Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
+  </tr>
+
+  {% for r in data %}
+  <tr>
+      <td>{{ r.patient.name }}</td>
+      <td>{{ r.disease }}</td>
+      <td>{{ r.treatment }}</td>
+      <td>{{ r.prescription }}</td>
+      <td>{{ r.created_date }}</td>
+
+      <td>
+        <a href="{% url 'verify_user' 'update' 'record' r.id %}" class="btn-edit">
+          edit
+        </a>
+      </td>
+
+      <td>
+        <a href="{% url 'verify_user' 'delete' 'record' r.id %}" class="btn-del">
+          del
+        </a>
+      </td>
+  </tr>
+  {% endfor %}
+</table>
+ <a href="{% url 'patient_record_add' %}" class="btn-add">ADD</a> 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

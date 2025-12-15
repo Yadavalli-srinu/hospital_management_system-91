@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vvhrga3_wi)2i!$dvhzk=y=6-2rb3@$pvf@05$o4+scjxajgqh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -73,27 +73,27 @@ WSGI_APPLICATION = 'hospital_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-
-import os
-if os.environ.get("RENDER"):
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": os.environ.get("MYSQLDATABASE"),
-            "USER": os.environ.get("MYSQLUSER"),
-            "PASSWORD": os.environ.get("MYSQLPASSWORD"),
-            "HOST": os.environ.get("MYSQLHOST"),
-            "PORT": os.environ.get("MYSQLPORT", "3306"),
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+
+
+# import os
+# if os.environ.get("RENDER"):
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.mysql",
+#             "NAME": os.environ.get("MYSQLDATABASE"),
+#             "USER": os.environ.get("MYSQLUSER"),
+#             "PASSWORD": os.environ.get("MYSQLPASSWORD"),
+#             "HOST": os.environ.get("MYSQLHOST"),
+#             "PORT": os.environ.get("MYSQLPORT", "3306"),
+#         }
+#     }
 
 
 

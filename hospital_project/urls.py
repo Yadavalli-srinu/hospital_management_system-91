@@ -20,7 +20,7 @@ from app1.views import (reg_details,log_details,home_page,
                         department_details,department_empty,department_update,department_delete,
                         doctor_details,doctor_empty,doctor_update,doctor_delete,
                         patient_details,patient_empty,patient_update,patient_delete,
-                        patient_record_details,patient_record_empty,patient_record_update,patient_record_delete)
+                        patient_record_details,patient_record_empty,patient_record_update,patient_record_delete,verify_user)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path("", reg_details, name="reg101"),
     path("login/", log_details, name="log101"),
     path("home/", home_page, name="home"),
+   path('verify/<str:action>/<str:model_name>/<int:id>/',verify_user, name='verify_user'),
 
     # DEPARTMENT 
     path("department/", department_details, name="department_list"),

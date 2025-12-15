@@ -5,77 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      <style>
-        body{
+   body {
     background-image: url("https://thumbs.dreamstime.com/b/healthcare-technology-doctor-using-digital-tablet-icon-medical-network-hospital-background-162019727.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100%;
-    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", Arial, sans-serif;
 }
-*{
+
+/* Reset */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-        .form-box {
-            
-            width: 450px;
-            margin: 60px auto;
-            background: #ffffff;
-            padding: 25px 30px;
-            border-radius: 15px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-            border-top: 6px solid #0097a7; 
-        }
+/* Glass Form Box */
+.form-box {
+    width: 450px;
+    padding: 60px 35px;
+    border-radius: 18px;
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #006064;
-            font-weight: 700;
-        }
+    /* Glassmorphism */
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(12px);
 
-        form p label {
-            font-weight: 600;
-            color: #004d40; 
-        }
+    border: 1px solid rgba(255, 255, 255, 0.4);
 
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #b2dfdb;
-            border-radius: 8px;
-            margin-top: 5px;
-            margin-bottom: 18px;
-            font-size: 15px;
-            background: #f1fefc; 
-            
-        }
+    /* Shadow */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #0097a7;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 17px;
-            font-weight: 600;
-            cursor: pointer;
-        }
+    animation: fadeIn 0.8s ease-in-out;
+}
 
-        button:hover {
-            background: #007c8a;
-        }
-    </style>
+/* Title */
+h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    color: #004d40;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Labels */
+form p label {
+    font-weight: 600;
+    color: #003c34;
+    font-size: 14px;
+}
+
+/* Inputs */
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #80cbc4;
+    border-radius: 10px;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+    transition: 0.25s ease;
+}
+
+/* Focus Effect (highlighted border + glow) */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #0097a7;
+    box-shadow: 0 0 6px rgba(0, 151, 167, 0.4);
+    background: #ffffff;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #0097a7, #006064);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #00acc1, #007c8a);
+    transform: translateY(-2px);
+}
+.navbar-glass {
+    background: rgba(0, 150, 136, 0.35);  /* teal transparent */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Brand */
+.navbar-glass .navbar-brand {
+    font-weight: 700;
+    color: #004d40 !important;
+    letter-spacing: 1px;
+}
+
+/* Nav Links */
+.navbar-glass .nav-link {
+    font-weight: 600;
+    color: #003c34 !important;
+    margin-left: 8px;
+    padding: 8px 14px !important;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar-glass .nav-link:hover {
+    background: rgba(0, 121, 107, 0.25);
+    transform: translateY(-2px);
+    color: #004d40 !important;
+}
+
+/* Active Link (Optional Auto Highlight) */
+.navbar-glass .nav-link.active {
+    background: rgba(0, 150, 136, 0.4);
+    color: #004d40 !important;
+}
+
+/* Menu Toggler */
+.navbar-glass .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-glass .navbar-toggler-icon {
+    filter: brightness(0.9);
+}
+   </style>
+<!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}">Hospital System</a>
 
@@ -88,31 +163,31 @@
     <div class="collapse navbar-collapse" id="navmenu">
 
       <ul class="navbar-nav ms-auto">
-        
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
-        </li>
-        <!-- Department -->
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'department_list' %}">Department</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" 
+             href="{% url 'home' %}">Home</a>
         </li>
 
-        <!-- Doctor -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'doctor_list' %}">Doctor</a>
+          <a class="nav-link {% if 'department' in request.path %}active{% endif %}" 
+             href="{% url 'department_list' %}">Department</a>
         </li>
 
-        <!-- Patient -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'patient_list' %}">Patient</a>
+          <a class="nav-link {% if 'doctor' in request.path %}active{% endif %}" 
+             href="{% url 'doctor_list' %}">Doctor</a>
         </li>
 
-        <!-- Patient Record -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'patient_record_list' %}">Patient Record</a>
+          <a class="nav-link {% if 'patient_list' in request.path %}active{% endif %}" 
+             href="{% url 'patient_list' %}">Patient</a>
         </li>
 
-        
+        <li class="nav-item">
+          <a class="nav-link {% if 'patient_record' in request.path %}active{% endif %}" 
+             href="{% url 'patient_record_list' %}">Patient Record</a>
+        </li>
 
       </ul>
 

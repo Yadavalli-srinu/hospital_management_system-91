@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   <style>
+    <style>
     body {
             margin: 0;
             padding: 0;
@@ -77,28 +77,17 @@
 </head>
 <body>
     <form method="post">
-        {% csrf_token %}
-        <p>{{message}}</p>
-        <h1>Login</h1>
-     <table>
-        <tr>
-            <td>
-                <input type="text" placeholder="enter userneme" name="log_username">
-            </td>
-        </tr>
-        
-        <tr>
-            <td>
-                <input type="password" placeholder="password" name="log_password">
-            </td>
-        </tr>
-       
-        <tr>
-            <td>
-                <button type="submit">submit</button>
-        </tr>
-    </table>
-    </form>
-   
+    {% csrf_token %}
+    <h3>Verify to Continue</h3>
+
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+
+    <button type="submit">Verify</button>
+
+    {% if message %}
+        <p style="color:red">{{ message }}</p>
+    {% endif %}
+</form>
 </body>
 </html>

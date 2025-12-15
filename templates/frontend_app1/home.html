@@ -18,17 +18,128 @@
     margin: 0;
     box-sizing: border-box;
 }
-</style>
+
  
+.navbar-glass {
+    background: rgba(0, 150, 136, 0.35);  /* teal transparent */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
 
-    <!-- Bootstrap CDN -->
+/* Brand */
+.navbar-glass .navbar-brand {
+    font-weight: 700;
+    color: #004d40 !important;
+    letter-spacing: 1px;
+}
+
+/* Nav Links */
+.navbar-glass .nav-link {
+    font-weight: 600;
+    color: #003c34 !important;
+    margin-left: 8px;
+    padding: 8px 14px !important;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar-glass .nav-link:hover {
+    background: rgba(0, 121, 107, 0.25);
+    transform: translateY(-2px);
+    color: #004d40 !important;
+}
+
+/* Active Link (Optional Auto Highlight) */
+.navbar-glass .nav-link.active {
+    background: rgba(0, 150, 136, 0.4);
+    color: #004d40 !important;
+}
+
+/* Menu Toggler */
+.navbar-glass .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar-glass .navbar-toggler-icon {
+    filter: brightness(0.9);
+}
+.cards-container {
+    margin-top: 120px;  /* space below navbar */
+    display: flex;
+    justify-content: center;
+    
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+    transition: 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 150, 136, 0.4);
+}
+
+.feature-icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+    color: #00796b;
+}
+
+.feature-card   h5 {
+    font-weight: 700;
+    color: #004d40;
+    margin-bottom: 10px;
+    
+}
+
+.feature-card  p {
+    color: #003c34;
+    font-weight: 500;
+    
+}
+.feature-link {
+  text-decoration: none;
+  color: inherit;      /* keeps original text color */
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    padding: 20px;
+}
+
+.patient-quote{
+    max-width: 850px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    color:  #007c8a;              
+    line-height: 1.5;
+    padding: 20px 30px;
+    border-top: 3px solid  #007c8a;
+    border-bottom: 3px solid  #007c8a;
+    background: #f8f9fabd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    font-family: "Segoe UI", sans-serif;
+}
+
+   </style>
+<!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'home' %}">Hospital System</a>
 
@@ -41,31 +152,31 @@
     <div class="collapse navbar-collapse" id="navmenu">
 
       <ul class="navbar-nav ms-auto">
-        
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
-        </li>
-        <!-- Department -->
+
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'department_list' %}">Department</a>
+          <a class="nav-link {% if request.path == '/' %}active{% endif %}" 
+             href="{% url 'home' %}">Home</a>
         </li>
 
-        <!-- Doctor -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'doctor_list' %}">Doctor</a>
+          <a class="nav-link {% if 'department' in request.path %}active{% endif %}" 
+             href="{% url 'department_list' %}">Department</a>
         </li>
 
-        <!-- Patient -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'patient_list' %}">Patient</a>
+          <a class="nav-link {% if 'doctor' in request.path %}active{% endif %}" 
+             href="{% url 'doctor_list' %}">Doctor</a>
         </li>
 
-        <!-- Patient Record -->
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'patient_record_list' %}">Patient Record</a>
+          <a class="nav-link {% if 'patient_list' in request.path %}active{% endif %}" 
+             href="{% url 'patient_list' %}">Patient</a>
         </li>
 
-        
+        <li class="nav-item">
+          <a class="nav-link {% if 'patient_record' in request.path %}active{% endif %}" 
+             href="{% url 'patient_record_list' %}">Patient Record</a>
+        </li>
 
       </ul>
 
@@ -73,10 +184,64 @@
   </div>
 </nav>
 
+<div class="container cards-container">
+  <div class="row g-4">
+
+    <!-- Department Card -->
+   <div class="col-md-3">
+   <a href="{% url 'department_list' %}" class="feature-link">
+    <div class="feature-card">
+      <div class="feature-icon">🏥</div>
+      <h5>Departments</h5>
+      <p>Number Of Records {{ dept_total }}</p>
+    </div>
+  </a>
+</div>
+
+    <!-- Doctors Card -->
+    <div class="col-md-3">
+   <a href="{% url 'doctor_list' %}" class="feature-link">
+    <div class="feature-card">
+      <div class="feature-icon">👨‍⚕️</div>
+      <h5>Doctors</h5>
+      <p>Number Of Records {{ doctor_total }}</p>
+    </div>
+  </a>
+</div>
+
+
+    <!-- Patients Card -->
+    <div class="col-md-3">
+   <a href="{% url 'patient_list' %}" class="feature-link">
+    <div class="feature-card">
+      <div class="feature-icon">🧑‍🦽</div>
+      <h5>Patients</h5>
+      <p>Number Of Records {{ patient_total }}</p>
+    </div>
+  </a>
+</div>
+
+
+    <!-- Patient Records Card -->
+    <div class="col-md-3">
+   <a href="{% url 'patient_record_list' %}" class="feature-link">
+    <div class="feature-card">
+      <div class="feature-icon">📄</div>
+      <h5>Patient Records</h5>
+      <p>Number Of Records {{ record_total }}</p>
+    </div>
+  </a>
+</div>
+
+
+  </div>
+</div>
 <!-- Page Content -->
-<div class="container mt-5">
-    <h2>Welcome to Hospital Management System</h2>
-    <p>Select any module from the navigation bar.</p>
+<div class="container">
+    <h2 class="patient-quote">
+        "Do as much as possible for the patient and as little as possible for the patient" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -Sigmund Freud
+    </h2>
+   
 </div>
 
 
