@@ -215,13 +215,13 @@ tr:hover td {
       <td>{{ r.created_date }}</td>
 
       <td>
-        <a href="{% url 'verify_user' 'update' 'record' r.id %}" class="btn-edit">
+        <a href="{% url 'verify_user' 'record' 'update'  r.id %}" class="btn-edit">
           edit
         </a>
       </td>
 
       <td>
-        <a href="{% url 'verify_user' 'delete' 'record' r.id %}" class="btn-del">
+        <a href="{% url 'verify_user'  'record' 'delete'  r.id %}" class="btn-del">
           del
         </a>
       </td>

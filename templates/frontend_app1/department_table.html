@@ -235,13 +235,13 @@ tr:hover td {
       <td>{{ i.hod }}</td>
 
       <td>
-        <a href="{% url 'verify_user' 'update' 'department' i.id %}" class="btn-edit">
+        <a href="{% url 'verify_user' 'department' 'update'  i.id %}" class="btn-edit">
           edit
         </a>
       </td>
 
       <td>
-        <a href="{% url 'verify_user' 'delete' 'department' i.id %}" class="btn-del">
+        <a href="{% url 'verify_user' 'department' 'delete'  i.id %}" class="btn-del">
           del
         </a>
       </td>

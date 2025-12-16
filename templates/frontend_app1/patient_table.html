@@ -215,16 +215,16 @@ tr:hover td {
       <td>{{ p.age }}</td>
       <td>{{ p.gender }}</td>
       <td>{{ p.phone }}</td>
-      <td>{{ p.doctor.name }}</td>
+      <td>{{ p.doctor}}</td>
 
       <td>
-        <a href="{% url 'verify_user' 'update' 'patient' p.id %}" class="btn-edit">
+        <a href="{% url 'verify_user'   'patient' 'update'  p.id %}" class="btn-edit">
           edit
         </a>
       </td>
 
       <td>
-        <a href="{% url 'verify_user' 'delete' 'patient' p.id %}" class="btn-del">
+        <a href="{% url 'verify_user' 'patient' 'delete'  p.id %}" class="btn-del">
           del
         </a>
       </td>

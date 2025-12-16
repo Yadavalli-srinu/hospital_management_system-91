@@ -29,7 +29,7 @@ urlpatterns = [
     path("", reg_details, name="reg101"),
     path("login/", log_details, name="log101"),
     path("home/", home_page, name="home"),
-   path('verify/<str:action>/<str:model_name>/<int:id>/',verify_user, name='verify_user'),
+   path('verify/<str:model_name>/<str:action>/<int:id>/',verify_user, name='verify_user'),
 
     # DEPARTMENT 
     path("department/", department_details, name="department_list"),
@@ -39,20 +39,20 @@ urlpatterns = [
 
     #  DOCTOR 
     path("doctor/", doctor_details, name="doctor_list"),
-    path("doctor/add/", doctor_empty, name="doctor_add"),
-    path("doctor/update/<int:id>/", doctor_update, name="doctor_update"),
-    path("doctor/delete/<int:id>/", doctor_delete, name="doctor_delete"),
+    path("doctor_add101/", doctor_empty, name="doctor_add"),
+    path("doctor_update101/<int:id>/", doctor_update, name="doctor_update101"),
+    path("doctor_delete101/<int:id>/", doctor_delete, name="doctor_delete101"),
 
     #  PATIENT 
     path("patient/", patient_details, name="patient_list"),
-    path("patient/add/", patient_empty, name="patient_add"),
-    path("patient/update/<int:id>/", patient_update, name="patient_update"),
-    path("patient/delete/<int:id>/", patient_delete, name="patient_delete"),
+    path("patient_add101/", patient_empty, name="patient_add"),
+    path("patient_update101/<int:id>/", patient_update, name="patient_update"),
+    path("patient_delete101/<int:id>/", patient_delete, name="patient_delete"),
 
     #  PATIENT RECORD
     path("patient-record/", patient_record_details, name="patient_record_list"),
-    path("patient-record/add/", patient_record_empty, name="patient_record_add"),
-    path("patient-record/update/<int:id>/", patient_record_update, name="patient_record_update"),
-    path("patient-record/delete/<int:id>/", patient_record_delete, name="patient_record_delete"),
+    path("patient-record_add101/", patient_record_empty, name="patient_record_add"),
+    path("patient-record_update101/<int:id>/", patient_record_update, name="patient_record_update"),
+    path("patient-record_delete101/<int:id>/", patient_record_delete, name="patient_record_delete"),
 
 ]

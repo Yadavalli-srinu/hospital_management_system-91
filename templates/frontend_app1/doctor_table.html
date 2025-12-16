@@ -204,19 +204,19 @@ tr:hover td {
       <th>Delete</th>
   </tr>
 
-  {% for d in data %}
+  {% for i in data %}
   <tr>
-      <td>{{ d.name }}</td>
-      <td>{{ d.department.name }}</td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.department}}</td>
 
       <td>
-        <a href="{% url 'verify_user' 'update' 'doctor' d.id %}" class="btn-edit">
+        <a href="{% url 'verify_user' 'doctor' 'update'  i.id %}" class="btn-edit">
           edit
         </a>
       </td>
 
       <td>
-        <a href="{% url 'verify_user' 'delete' 'doctor' d.id %}" class="btn-del">
+        <a href="{% url 'verify_user' 'doctor' 'delete' i.id %}" class="btn-del">
           del
         </a>
       </td>

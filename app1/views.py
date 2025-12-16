@@ -243,31 +243,34 @@ def patient_record_delete(request, id):
 
 
 #user Verification
-
-
-
-def verify_user(request, action, model_name, id):
+def verify_user(request,model_name,action,id):
     message = ''
-
     if request.method == "POST":
         username = request.POST.get('username')   
         password = request.POST.get('password')
 
-        user = authenticate(username=username, password=password)
-
-        if user is not None:
-            
-            if model_name == "department":
-                return redirect(f'department_{action}', id=id)
-
-            elif model_name == "doctor":
-                return redirect(f'doctor_{action}', id=id)
-
-            elif model_name == "patient":
-                return redirect(f'patient_{action}', id=id)
-
-            elif model_name == "record":
-                return redirect(f'patient_record_{action}', id=id)
+        # if user is not None:
+        if username=="yadavalliSrinu@0099" and password=="srinu@0099":
+              if model_name == "department":
+                 if action == "update":
+                  return redirect("department_update", id=id)
+                 if action == "delete":
+                  return redirect("department_delete", id=id)
+              if model_name == "doctor":
+                  if action == "update":
+                    return redirect("doctor_update101", id=id)
+                  if action == "delete":
+                    return redirect("doctor_delete101", id=id)
+              if model_name == "patient":
+                 if action == "update":
+                   return redirect("patient_update", id=id)
+                 if action == "delete":
+                  return redirect("patient_delete", id=id)
+              if model_name == "record":
+                if action == "update":
+                 return redirect("patient_record_update", id=id)
+                if action == "delete":
+                 return redirect("patient_record_delete", id=id)
         else:
             message = "Invalid Username or Password"
 
