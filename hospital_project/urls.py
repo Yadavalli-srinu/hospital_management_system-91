@@ -26,8 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # AUTH
-    path("", reg_details, name="reg101"),
-    path("login/", log_details, name="log101"),
+    path("", log_details, name="log101"),
+    path("reg/", reg_details, name="reg101"),
     path("home/", home_page, name="home"),
    path('verify/<str:model_name>/<str:action>/<int:id>/',verify_user, name='verify_user'),
 
